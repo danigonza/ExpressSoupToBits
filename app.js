@@ -27,4 +27,11 @@ app.post('/cities', urlencode, function(req, res){
 	});
 });
 
+app.delete('/cities/:name', function(req, res){
+		client.hdel('cities', req.params.name, function(err){
+			if (err) throw err;
+			res.sendStatus(204);
+		});
+});
+
 module.exports = app;
