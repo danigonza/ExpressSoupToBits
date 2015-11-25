@@ -65,6 +65,13 @@ describe('Creating new cities', function(){
 			.expect(/springfield/i, done);
 	});
 
+	it('Validate city name and description', function(done){
+		request(app)
+			.post('/cities')
+			.send('name=&description=')
+			.expect(400, done);
+	});
+
 });
 
 describe('Deleting cities', function(){
