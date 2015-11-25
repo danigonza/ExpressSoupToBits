@@ -15,6 +15,10 @@ app.get('/cities', function(req, res){
 	res.json(Object.keys(cities));
 });
 
-
+app.post('/cities', urlencode, function(req, res){
+	var newCity = req.body;
+	cities[newCity.name] = newCity.description;
+	res.status(201).json(newCity.name);
+});
 
 module.exports = app;
